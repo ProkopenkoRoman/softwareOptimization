@@ -9,5 +9,5 @@ end
 puts 'Input number of months: '
 month = gets.chomp
 
-puts 'couples of rabits: '  
+puts 'couples of rabbits: '  
 puts fibonacci(month.to_i + 2)
