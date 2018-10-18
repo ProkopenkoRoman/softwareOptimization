@@ -1,0 +1,44 @@
+go_to_work:
+  mana: -30
+  money: 100
+  happiness: -5
+  fatigue: 70
+  
+see_nature:
+  mana: -10
+  happiness: 1
+  fatigue: 10
+  
+drink_wine_and_tv_watch:
+  health: -5
+  mana: 30
+  money: -20
+  happiness: -1
+  fatigue: 10
+
+go_to_bar:
+  mana: 60
+  happiness: 1
+  fatigue: 40
+  health: -10
+  money: -100
+
+drink_with_marginals:
+  mana: 90
+  happiness: 5
+  fatigue: 80
+  health: -80
+  money: -150
+
+sing_in_metro:
+  mana: 10
+  happiness: 1
+  fatigue: 20
+  money1: 60
+  money2: 10
+
+sleep:
+  mana: -50
+  happiness: -3
+  fatigue: -70
+  health: 90
