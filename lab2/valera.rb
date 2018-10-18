@@ -63,6 +63,8 @@ class View
     puts "5) Выпить с маргинальными личностями\n"
     puts "6) Петь в метро\n"
     puts "7) Спать\n"
+    puts "8) Сохранить\n"
+    puts "9) Загрузить\n"
   end
   
   def dead
@@ -213,9 +215,6 @@ view = View.new
 view.welcome
   
 while valera.dead? != 1
-  #сохранение статов Валеры в файл после каждого действия
-  stat.save('save.yml', valera)
-
   valera.stat
   view.actions
   print "> "
@@ -282,6 +281,14 @@ while valera.dead? != 1
       action.sleep(valera)
       #valera.sleep
       puts "Отойдя ото сна, Валера почесал репу, размышляя чем бы себя занять.\n"
+    when "8"
+      puts "Валера сделал сохранение.\n"
+      stat.save('save.yml', valera)
+    when "9"
+      stat = Stats.new
+      yml = stat.load("save.yml")
+      #начальные статы Валеры загружаем из файла сохранения + то, что он жив (dead = 0)
+      valera = Valera.new({:health => yml['health'], :mana => yml['mana'], :money => yml['money'], :happiness => yml['happiness'], :fatigue => yml['fatigue'], :dead => 0})
     else
       puts "Хватит проверок на дурака! Выбери действия из предложенных!\n"
   end
