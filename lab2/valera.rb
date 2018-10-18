@@ -1,12 +1,12 @@
 require 'yaml'
 
 class Valera
-  attr_accessor :health 		#здоровье 			(0..100)
-  attr_accessor :mana 			#мана(алкоголь) 		(0..100)
-  attr_accessor :money 			#деньги
-  attr_accessor :happiness 		#жизнерадостность 		(-10..10)
-  attr_accessor :fatigue 		#усталость 			(0..100)
-  attr_accessor :dead 			#мертв?
+  attr_accessor :health 	#здоровье 			(0..100)
+  attr_accessor :mana 		#мана(алкоголь) 		(0..100)
+  attr_accessor :money 		#деньги
+  attr_accessor :happiness 	#жизнерадостность 		(-10..10)
+  attr_accessor :fatigue 	#усталость 			(0..100)
+  attr_accessor :dead 		#мертв?
 
   def initialize (args)
     health = args[:health]
@@ -112,17 +112,6 @@ class Actions #класс управления действиями Валеры
     valera.happiness = -10 if valera.happiness < -10
     valera.fatigue += @yml1['fatigue']
     valera.fatigue = 100 if valera.fatigue > 100 
-    
-    #изменение статов вручную (не оч вариант) 
-=begin 
-    valera.mana -= 30
-    valera.mana = 0 if valera.mana < 0  
-    valera.money += 100
-    valera.happiness -= 5
-    valera.happiness = -10 if valera.happiness < -10
-    valera.fatigue += 70
-   valera.fatigue = 100 if valera.fatigue > 100
-=end  
   end
   
   def see_nature(valera) #созерцать природу
@@ -227,14 +216,12 @@ while valera.dead? != 1
 	    puts "Валера очень устал, чтобы идти на работу. К тому же он пьян...\n"
       else
 	    puts "Валера нехотя побрел на работу, матеря про себя игрока.\n"
-	    #valera.go_to_work
 	    action.go_to_work(valera)
 	    puts "Еле волоча своё бренное тело, Валера вернулся с работы.\n"
 	  end
     when "2"
       puts "Валера вышел на балкон и стал любоваться природой... Алкоголь потихоньку выветривался, настроение росло.\n"
       action.see_nature(valera)
-      #valera.see_nature
       puts "Подышав воздухом (\"Хотя бы за это не надо платить!\" - подумал про себя Валера), он вернулся в квартиру.\n"
     when "3"
       if valera.money < 20
@@ -242,7 +229,6 @@ while valera.dead? != 1
       else
         puts "Купив бутылочку дешманского вина (благо рядом Пятёрочка!), Валера хорошо провел время, смотря сериал Бандитский Петербург.\n"
         action.drink_wine_and_tv_watch(valera)
-        #valera.drink_wine_and_tv_watch
         puts "Сериал закончился. Да и фунфырёк уже пуст. Чем же заняться далее?\n"
       end
     when "4"
@@ -251,7 +237,6 @@ while valera.dead? != 1
       else
         puts "Одев свой лучший пиджак с выпускного (\"вдруг девочку какую встречу?\"), Валера направился знакомой до боли дорожкой в бар.\n"
         action.go_to_bar(valera)
-        #valera.go_to_bar
         puts "Девочку Валера не встретил :( Зато нажрался как свинья. Да и карманы стали легче, что еще больше огорчило Валеру.\n"
       end
     when "5"
@@ -260,7 +245,6 @@ while valera.dead? != 1
       else
         puts "Накрыв поляну на крышке погреба Петровича (это было местом сходки всех местных маргиналов), Валера проставился бухлом перед пацанами.\n"
         action.drink_with_marginals(valera)
-        #valera.drink_with_marginals
         puts "Обблёванный и грязный Валера вернулся домой ближе к утру. Денег в карманах изрядно поубавилось.\n"
       end
     when "6"
@@ -270,7 +254,6 @@ while valera.dead? != 1
         puts "То ли Валера был недостаточно пьян, чтобы хорошо спеть, то ли прохожим не зашла песня Владимирский Централ. Много денег срубить не удалось :(\n"
       end 
       action.sing_in_metro(valera) 
-      #valera.sing_in_metro
       puts "Проведя творческий вечер в метро (и выступив несколько раз на бис), Валера пришкондыбал домой уставшим.\n"
     when "7"
       if (valera.mana < 30)
@@ -279,7 +262,6 @@ while valera.dead? != 1
         puts "Пьяный в дрова Валера завалился на кровать, не сняв даже обувь. Сон почти не принес облегчения. Наутро похмелье сказало Валере \"здравствуй!\"\n"
       end  
       action.sleep(valera)
-      #valera.sleep
       puts "Отойдя ото сна, Валера почесал репу, размышляя чем бы себя занять.\n"
     when "8"
       puts "Валера сделал сохранение.\n"
@@ -295,3 +277,4 @@ while valera.dead? != 1
 end
   
 view.dead
+valera.stat
