@@ -1,5 +1,3 @@
-require 'yaml'
-
 class Valera
   attr_accessor :health 	  #здоровье 				  (0..100)
   attr_accessor :mana 		  #мана(алкоголь) 		(0..100)
