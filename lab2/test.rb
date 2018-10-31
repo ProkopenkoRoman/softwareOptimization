@@ -97,4 +97,4 @@ valera = nil
 #тест на загрузку статов из сохраненного файла
 valera1 = Valera.new({:health => yml['health'], :mana => yml['mana'], :money => yml['money'], :happiness => yml['happiness'], :fatigue => yml['fatigue'], :dead => 0})
 t.load_test(valera1)
-valera = nil
+valera1 = nil
